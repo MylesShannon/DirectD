@@ -1,0 +1,26 @@
+.vote-box {
+  float: left;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 0 !important;
+}
+  .vote-action {
+    height: 50%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .vote-count {
+    height: 50%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+  }
+    .vote-total {
+      width: 50%;
+    }
+
+    .user-total {
+      width: 50%;
+    }

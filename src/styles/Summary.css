@@ -1,0 +1,11 @@
+.bill-summary {
+  float: right;
+  width: calc(100% - 150px);
+
+}
+
+  .bill-summary .well {
+    height: 140px;
+    overflow: scroll;
+    margin-bottom: 0 !important;
+  }
