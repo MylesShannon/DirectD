@@ -10,6 +10,7 @@ class BillInfoComponent extends React.Component {
           <Panel header={'Info'}>
             <div><b>Status: </b>{this.props.bills[this.props.billId].current_status_label}</div>
             <div><b>Congress: </b>{this.props.bills[this.props.billId].congress}</div>
+            <div><b>Source: </b><a href={this.props.bills[this.props.billId].link} target="_blank">{this.props.bills[this.props.billId].data_source_title}</a></div>
           </Panel>
         </Col>
         <Col md={4}>
