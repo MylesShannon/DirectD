@@ -3,11 +3,12 @@ import qs from 'querystring';
 import moment from 'moment';
 import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
+var config = require('config');
 
 // Sign in with Google
 export function googleLogin() {
   const google = {
-    url: 'http://localhost:8002/api/v1/auth/google',
+    url: config.api+'/api/v1/auth/google',
     clientId: '786999100982-9ugrvcg6gfh8412vjaqecj3c9i6376up.apps.googleusercontent.com',
     redirectUri: 'http://localhost:8080',
     authorizationUrl: 'https://accounts.google.com/o/oauth2/auth',

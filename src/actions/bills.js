@@ -1,10 +1,11 @@
 import { Schema, arrayOf } from 'normalizr';
+var config = require('config');
 
 export function getBills() {
   return (dispatch) => dispatch({
     type: 'GET_BILLS',
     payload: new Promise((resolve, reject) => {
-      fetch('http://localhost:8002/api/v1/bills', {
+      fetch(config.api+'/api/v1/bills', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       })

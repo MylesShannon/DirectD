@@ -3,7 +3,8 @@
 import baseConfig from './base';
 
 let config = {
-  appEnv: 'test'  // don't remove the appEnv property here
+  appEnv: 'test',
+  api: 'http://localhost:8002'
 };
 
-export default Object.freeze(Object.assign(baseConfig, config));
+module.exports = Object.freeze(Object.assign(baseConfig, config));

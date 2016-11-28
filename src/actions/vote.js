@@ -1,6 +1,8 @@
+var config = require('config');
+
 export function voteUp(billId, userId) {
   return (dispatch) => {
-    return fetch('http://localhost:8002/api/v1/vote/'+billId, {
+    return fetch(config.api+'/api/v1/vote/'+billId, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include'
@@ -27,7 +29,7 @@ export function voteUp(billId, userId) {
 
 export function voteDown(billId, userId) {
   return (dispatch) => {
-    return fetch('http://localhost:8002/api/v1/vote/'+billId, {
+    return fetch(config.api+'/api/v1/vote/'+billId, {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include'
