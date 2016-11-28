@@ -1,16 +1,21 @@
 const initialState = {
+  fetching: false,
+  fetched: false,
   data: {},
-  ids : []
+  ids : [],
+  error: false
 };
 
 import update from 'react/lib/update';
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
-    case 'GET_BILLS_SUCCESS':
-      return Object.assign({}, state, {'data': action.entities, ids: action.result});
-    case 'GET_BILLS_FAILURE':
-      return initialState;
+    case 'GET_BILLS_PENDING':
+      return {...state, fetching: true}
+    case 'GET_BILLS_FULFILLED':
+      return {...state, fetching: false, fetched: true, 'data': action.payload.entities.bills, 'ids': action.payload.result.bills };
+    case 'GET_BILLS_REJECTED':
+      return {...state, fetching: false, error: true};
     case 'VOTE_UP_SUCCESS':
       return update(state, {
         data: {

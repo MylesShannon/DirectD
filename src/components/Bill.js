@@ -7,7 +7,8 @@ import Summary from './Summary';
 
 class BillComponent extends React.Component {
   render() {
-    const bill = this.props.bills[this.props.billId];
+    if(this.props.bills.fetched !== true) { return null; }
+    const bill = this.props.bills.data[this.props.billId];
     const head = (
       <strong><Link to={'/bill/'+this.props.billId}>{bill.title_without_number}</Link></strong>
     )
@@ -26,13 +27,13 @@ class BillComponent extends React.Component {
           <Summary bill={bill} />
         </Panel>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    bills: state.bills.data
+    bills: state.bills
   };
 };
 

@@ -10,7 +10,7 @@ class AboutModule extends React.Component {
           <p>This is an example of ReactJS workng with a NodeJS JSON API to bring the most recent active bills in the U.S. Congress to the power of the internet.</p>
           <p>Share your opinions and vote the way you would. Be your own Congress!</p>
           <br />
-          <p>Written by <a href="https://github.com/MylesShannon">Myles Shannon</a></p>
+          <p>Written by <a href="https://github.com/MylesShannon" target="_blank">Myles Shannon</a></p>
         </Col>
       </Row>
     );

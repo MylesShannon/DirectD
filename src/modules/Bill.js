@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Bill from '../components/Bill';
 import BillInfo from '../components/BillInfo';
+import { connect } from 'react-redux';
 
 class BillModule extends React.Component {
   render() {
@@ -9,13 +10,19 @@ class BillModule extends React.Component {
       <div>
         <Row>
           <Col md={12}>
-            <Bill billId={this.props.params.billId} />
+            <Bill billId={this.props.billId} />
           </Col>
         </Row>
-        <BillInfo billId={this.props.params.billId} />
+        <BillInfo billId={this.props.billId} />
       </div>
     );
   }
 }
 
-export default BillModule;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    billId: ownProps.params.billId
+  };
+};
+
+export default connect(mapStateToProps)(BillModule);

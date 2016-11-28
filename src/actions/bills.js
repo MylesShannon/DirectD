@@ -1,35 +1,25 @@
-import { normalize, Schema, arrayOf } from 'normalizr';
-
-const bill = new Schema('bill');
-const bills = new Schema('bills');
-
-bills.define({
-  id: bill
-});
+import { Schema, arrayOf } from 'normalizr';
 
 export function getBills() {
-  return (dispatch) => {
-    return fetch('http://localhost:8002/api/v1/bills', {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    }).then((response) => {
-      if (response.ok) {
-        return response.json().then((json) => {
-          const wrappedArr = { bills: json }
-          const normalized = normalize(wrappedArr, {
-            bills: arrayOf(bills)
-          });
-          dispatch({
-            type: 'GET_BILLS_SUCCESS',
-            entities: normalized.entities.bills,
-            result: normalized.result.bills
-          });
-        });
-      } else {
-        dispatch({
-          type: 'GET_BILLS_FAILURE'
-        });
+  return (dispatch) => dispatch({
+    type: 'GET_BILLS',
+    payload: new Promise((resolve, reject) => {
+      fetch('http://localhost:8002/api/v1/bills', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then((response) => {
+        if(response.ok) {
+          resolve(response.json());
+        } else {
+          reject(response);
+        }
+      })
+    }),
+    meta: {
+      schema: {
+        bills: arrayOf(new Schema('bills'))
       }
-    });
-  };
+    }
+  }).catch(()=>{})
 }
