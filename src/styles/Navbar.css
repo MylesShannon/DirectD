@@ -1,0 +1,12 @@
+#signin-button {
+  height: 50px;
+  cursor: pointer;
+}
+
+#navbar-profile {
+  padding: 0;
+}
+
+#navbar-profile img {
+  height: 50px;
+}

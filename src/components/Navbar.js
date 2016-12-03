@@ -1,10 +1,10 @@
-require('styles/Nav.css');
+require('styles/Navbar.css');
 
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { LinkContainer} from 'react-router-bootstrap';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { googleLogin, logout } from '../actions/oauth';
 
 class NavComponent extends React.Component {
@@ -21,9 +21,17 @@ class NavComponent extends React.Component {
   }
   render() {
     const showLoginLogout = this.props.token ? (
-        <NavItem onClick={ this.handleLogout }>Logout</NavItem>
+        <Nav pullRight>
+          <NavDropdown title={ <img src={ this.props.user.profile_picture } /> } id="navbar-profile">
+            <LinkContainer to="/account"><MenuItem>Account</MenuItem></LinkContainer>
+            <MenuItem divider />
+            <MenuItem onClick={ this.handleLogout }>Logout</MenuItem>
+          </NavDropdown>
+        </Nav>
       ) : (
-        <NavItem onClick={ this.handleGoogleLogin } id="signin-button"><img src="../images/signin_button.png" /></NavItem>
+        <Navbar.Link pullRight>
+          <img id="signin-button" onClick={ this.handleGoogleLogin } src="../images/signin_button.png" />
+        </Navbar.Link>
       )
 
     return (
@@ -35,12 +43,10 @@ class NavComponent extends React.Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav pullRight>
-            {showLoginLogout}
-            <LinkContainer to="/about" >
-              <NavItem>About</NavItem>
-            </LinkContainer>
+          <Nav pullLeft>
+            <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
           </Nav>
+          {showLoginLogout}
         </Navbar.Collapse>
       </Navbar>
     );
@@ -49,6 +55,7 @@ class NavComponent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    router: state.routing,
     token: state.auth.token,
     user: state.auth.user
   };

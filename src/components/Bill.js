@@ -14,8 +14,8 @@ class BillComponent extends React.Component {
     )
     const foot = (
       <div>
-        {/*<div className="pull-left">source: <a href={this.props.bill.data_source_link} target="_blank">{this.props.bill.data_source_title}</a></div>*/}
-        <div className="pull-right">{new Date(bill.introduced_date).toString()}</div>
+        <div className="pull-left">{new Date(bill.introduced_date).toLocaleString()}</div>
+        <div className="pull-right">source: <a href={bill.data_source_link} target="_blank">{bill.data_source_title}</a></div>
         <div className="clearfix"></div>
       </div>
     )

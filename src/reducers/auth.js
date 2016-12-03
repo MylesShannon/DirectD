@@ -38,6 +38,8 @@ export default function auth(state = initialState, action) {
       return state;
     case 'LOGOUT_SUCCESS':
       return initialState;
+    case 'ACCOUNT_DELETE_SUCCESS':
+      return initialState;
     default:
       return state;
   }

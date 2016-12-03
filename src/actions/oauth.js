@@ -3,6 +3,8 @@ import qs from 'querystring';
 import moment from 'moment';
 import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
+import { getBills } from 'actions/bills';
+import { userTotal } from 'actions/user';
 var config = require('config');
 
 // Sign in with Google
@@ -32,6 +34,34 @@ export function logout() {
   browserHistory.push('/');
   return {
     type: 'LOGOUT_SUCCESS'
+  };
+}
+
+export function deleteAccount(props) {
+  return (dispatch) => {
+    return fetch(config.api+'/api/v1/user/remove', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then(() => {
+          cookie.remove('token');
+          browserHistory.push('/');
+          props.dispatch(getBills());
+          props.dispatch(userTotal());
+          dispatch({
+            type: 'ACCOUNT_DELETE_SUCCESS'
+          });
+        });
+      } else {
+        return response.json().then(() => {
+          dispatch({
+            type: 'ACCOUNT_DELETE_FAILURE'
+          });
+        });
+      }
+    });
   };
 }
 
@@ -150,7 +180,7 @@ function signIn({ token, user, window, interval, dispatch }) {
       token: token,
       user: user
     });
-    cookie.save('token', token, { expires: moment().add(1, 'hour').toDate() });
+    cookie.save('token', token, { expires: moment().add(24, 'hour').toDate() });
     browserHistory.push('/');
     resolve({ window: window, interval: interval });
   });

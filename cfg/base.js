@@ -11,7 +11,8 @@ let additionalPaths = [];
 
 module.exports = {
   additionalPaths: additionalPaths,
-  port: defaultSettings.port,
+  ip: '0.0.0.0',
+  port: 8080,
   debug: true,
   devtool: 'eval',
   output: {
