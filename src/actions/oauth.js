@@ -12,7 +12,7 @@ export function googleLogin() {
   const google = {
     url: config.api+'/api/v1/auth/google',
     clientId: '786999100982-9ugrvcg6gfh8412vjaqecj3c9i6376up.apps.googleusercontent.com',
-    redirectUri: 'http://localhost:8080',
+    redirectUri: config.redirect,
     authorizationUrl: 'https://accounts.google.com/o/oauth2/auth',
     scope: 'openid profile email',
     width: 452,

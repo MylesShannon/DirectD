@@ -30,7 +30,7 @@ class NavComponent extends React.Component {
         </Nav>
       ) : (
         <Navbar.Link pullRight>
-          <img id="signin-button" onClick={ this.handleGoogleLogin } src="../images/signin_button.png" />
+          <img id="signin-button" onClick={ this.handleGoogleLogin } src="../signin_button.png" />
         </Navbar.Link>
       )
 

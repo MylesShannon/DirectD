@@ -4,7 +4,8 @@ import baseConfig from './base';
 
 let config = {
   appEnv: 'dist',
-  api: 'https://api.mylesshannon.me'
+  api: 'https://api.mylesshannon.me',
+  redirect: 'https://directd.mylesshannon.me'
 };
 
 module.exports = Object.freeze(Object.assign({}, baseConfig, config));
