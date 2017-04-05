@@ -37,7 +37,7 @@ export function logout() {
   };
 }
 
-export function deleteAccount(props) {
+export function deleteAccount() {
   return (dispatch) => {
     return fetch(config.api+'/api/v1/user/remove', {
       method: 'post',
@@ -48,8 +48,8 @@ export function deleteAccount(props) {
         return response.json().then(() => {
           cookie.remove('token');
           browserHistory.push('/');
-          props.dispatch(getBills());
-          props.dispatch(userTotal());
+          dispatch(getBills());
+          dispatch(userTotal());
           dispatch({
             type: 'ACCOUNT_DELETE_SUCCESS'
           });

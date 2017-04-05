@@ -10,7 +10,7 @@ class AccountModule extends React.Component {
   }
 
   handleAccountDelete() {
-    this.props.dispatch(deleteAccount(this.props));
+    this.props.dispatch(deleteAccount());
   }
   render() {
     return (
