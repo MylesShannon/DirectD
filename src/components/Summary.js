@@ -10,7 +10,7 @@ class SummaryComponent extends React.Component {
       if(this.props.bill['_text'].summary) {
         return <Well>{this.props.bill['_text'].summary.text}</Well>
       } else {
-        return <Well>No summary for this bill</Well>
+        return <Well>No summary available for this bill</Well>
       }
     }
 
