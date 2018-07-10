@@ -17,7 +17,7 @@
     "start": "node server.js --env=dev",
     "test": "karma start",
     "test:watch": "karma start --autoWatch=true --singleRun=false",
-    "deploy": "s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket directd.mylesshannon.me --distId E3PSDTYWTOTROH --invalidate '/*'"
+    "deploy": "npm run dist && s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket directd.mylesshannon.me --distId E3PSDTYWTOTROH --invalidate '/*'"
   },
   "repository": "",
   "keywords": [],
