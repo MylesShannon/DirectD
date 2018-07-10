@@ -10,12 +10,12 @@ class BillComponent extends React.Component {
     if(this.props.bills.fetched !== true) { return null; }
     const bill = this.props.bills.data[this.props.billId];
     const head = (
-      <strong><Link to={'/bill/'+this.props.billId}>{bill.title_without_number}</Link></strong>
+      <strong><Link to={'/bill/'+this.props.billId}>{bill.title}</Link></strong>
     )
     const foot = (
       <div>
-        <div className="pull-left">{new Date(bill.introduced_date).toLocaleString()}</div>
-        <div className="pull-right">source: <a href={bill.data_source_link} target="_blank">{bill.data_source_title}</a></div>
+        <div className="pull-left">introduced: {new Date(bill.introduced_date).toLocaleString()}</div>
+        <div className="pull-right">source: <a href={bill.link} target="_blank">{bill.data_source_title}</a></div>
         <div className="clearfix"></div>
       </div>
     )
