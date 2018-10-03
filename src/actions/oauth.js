@@ -180,7 +180,7 @@ function signIn({ token, user, window, interval, dispatch }) {
       token: token,
       user: user
     });
-    cookie.save('token', token, { expires: moment().add(24, 'hour').toDate() });
+    cookie.save('token', token, { expires: moment().add(24, 'hour').toDate(), domain: window.location.hostname.indexOf('localhost') > 0 ? 'localhost ' : '.mylesshannon.me' });
     browserHistory.push('/');
     resolve({ window: window, interval: interval });
   });
